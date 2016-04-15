@@ -15,7 +15,7 @@ import alluxio.AlluxioURI;
 import alluxio.Configuration;
 import alluxio.Constants;
 import alluxio.client.ClientContext;
-import alluxio.client.ReadType;
+//import alluxio.client.ReadType;
 import alluxio.client.file.FileInStream;
 import alluxio.client.file.FileSystem;
 import alluxio.client.file.URIStatus;
@@ -88,7 +88,7 @@ public class HdfsFileInputStream extends InputStream implements Seekable, Positi
       mFileInfo = fs.getStatus(uri);
       mHdfsPath = new Path(mFileInfo.getUfsPath());
       mAlluxioFileInputStream =
-          fs.openFile(uri, OpenFileOptions.defaults().setReadType(ReadType.CACHE));
+          fs.openFile(uri, OpenFileOptions.defaults());
     } catch (FileDoesNotExistException e) {
       throw new FileNotFoundException(
           ExceptionMessage.HDFS_FILE_NOT_FOUND.getMessage(mHdfsPath, uri));
